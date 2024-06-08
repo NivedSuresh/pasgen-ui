@@ -1,0 +1,43 @@
+<div class="container">
+
+  <h1>Generate a <br><br>
+    <span>Random Password</span>
+  </h1>
+
+  <div class="display-container">
+    <div class="display">
+      <input type="text" id="password" placeholder="Password" [(ngModel)]="password" style="width: 100%">
+      <img *ngIf="password" (click)="copyPassword()" ngSrc="assets/copy.png" alt="copy" height="86" width="74">
+    </div>
+
+    <button (click)="onSave()" *ngIf="password;" class="save-button">Save</button>
+  </div>
+
+  <div style="display: flex">
+    <mat-slider min="8" max="20" step="1" style="width: 100%">
+      <input matSliderThumb [(ngModel)]="sliderValue" width="80%">
+    </mat-slider>
+    <div style="margin-top: 14px; margin-left: 20px">
+      <p>{{sliderValue}}</p>
+    </div>
+  </div>
+
+  <div style="display: flex; justify-content: space-between">
+
+    <div style="margin-top: 20px">
+      <div style="display: grid; gap: 10px">
+        <mat-checkbox [(ngModel)]="includeSpecialChars"> Special Characters </mat-checkbox>
+        <mat-checkbox [(ngModel)]="includeNumbers"> Numbers </mat-checkbox>
+        <mat-checkbox [(ngModel)]="includeUppercase"> Uppercase Letters </mat-checkbox>
+        <mat-checkbox [(ngModel)]="includeLowercase"> Lowercase Letters </mat-checkbox>
+      </div>
+    </div>
+
+    <div style="margin-top: 20px">
+      <button (click)="generatePassword()"> <img ngSrc="assets/generate.png" height="30" width="33" alt=""> Generate Password</button>
+    </div>
+
+  </div>
+
+</div>
+

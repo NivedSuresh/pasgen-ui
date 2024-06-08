@@ -1,0 +1,9 @@
+.display-container {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.save-button{
+  height: 50px; font-size: medium; margin-left: 20px; margin-top: 20px
+}
