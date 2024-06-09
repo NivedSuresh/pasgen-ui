@@ -52,6 +52,9 @@ export class PasgenService {
   }
 
   async fetchPasswords(page: number, count: number): Promise<PasswordStateModel> {
-    return firstValueFrom(this.httpClient.get<PasswordStateModel>(`http://localhost:8080/api?page=${page}&count=${count}`));
+    const headers = new HttpHeaders({
+      'x-auth-user-id': '1'
+    });
+    return firstValueFrom(this.httpClient.get<PasswordStateModel>(`http://localhost:8080/api?page=${page}&count=${count}`, {headers}));
   }
 }

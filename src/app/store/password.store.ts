@@ -17,7 +17,16 @@ export const passwordStore = signalStore({providedIn : "root"},
 
       async fetchPasswords(page: number, count: number){
         const newState = await pasgenService.fetchPasswords(page, count);
-        patchState(store, {...newState})
+        console.log(newState.hasPrev);
+
+        patchState(store, {
+          dtos: newState.dtos,
+          currentPage: newState.currentPage,
+          totalPages: newState.totalPages,
+          hasPrev: newState.hasPrev,
+          hasNext:newState.hasNext
+        })
+        console.log(store.hasPrev())
       },
 
       async savePassword(save: SavePassword){
@@ -27,7 +36,6 @@ export const passwordStore = signalStore({providedIn : "root"},
           dtos.push(dto);
           patchState(store, {dtos: dtos})
         }
-        console.log(store.dtos());
       }
 
     })),

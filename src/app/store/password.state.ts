@@ -3,13 +3,15 @@ import {PasswordDto} from "../models/PasswordDto.model";
 export type PasswordStateModel = {
   dtos: PasswordDto[]
   hasNext: boolean;
-  hasPre: boolean
+  hasPrev: boolean
   totalPages: number;
+  currentPage: number;
 }
 
 export const passwordState: PasswordStateModel = {
   dtos: [],
   hasNext: false,
-  hasPre: false,
-  totalPages: 0
+  hasPrev: false,
+  totalPages: 0,
+  currentPage: 1
 }
