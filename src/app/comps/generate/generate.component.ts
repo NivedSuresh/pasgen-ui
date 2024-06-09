@@ -7,6 +7,8 @@ import {MatRadioButton, MatRadioGroup} from "@angular/material/radio";
 import {MatCheckbox} from "@angular/material/checkbox";
 import {PasswordRequest} from "../../models/PasswordRequest.model";
 import {MatSlider, MatSliderThumb} from "@angular/material/slider";
+import {MatDialog} from "@angular/material/dialog";
+import {SaveDialogComponent} from "../save-dialog/save-dialog.component";
 
 @Component({
   selector: 'app-generate',
@@ -41,7 +43,8 @@ export class GenerateComponent {
     ceil: 200
   }
 
-  constructor(private pasgenService: PasgenService)
+  constructor(private pasgenService: PasgenService,
+              private matDialog: MatDialog)
   {
     this.password = '';
     this.resetIncludeFields();
@@ -73,6 +76,6 @@ export class GenerateComponent {
   }
 
   onSave() {
-
+    this.matDialog.open(SaveDialogComponent, {width: '300px', data: {password: this.password}})
   }
 }
